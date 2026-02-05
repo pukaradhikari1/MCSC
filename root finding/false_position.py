@@ -11,10 +11,10 @@ def false_position(f,x0,x1,tol=1e-6,max_iter=100):
         if abs(fx1)<tol:
             return x1,i
         c=x1-fx1*(x1-x0)/(fx1-fx0)
-        if f(c)*fx1<0:
-            x0,x1=x1,c
+        if fx0 * f(c) < 0:
+            x1 = c
         else:
-            x0,x1=x0,c
+            x0 = c
     return x1,max_iter
 root,iteration=false_position(function,0,3)
 print(f"Approximate root:{root:.6f}")
